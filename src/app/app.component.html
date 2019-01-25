@@ -1,21 +1,56 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="con">
+  <!-- NAVBAR! -->
+  <nav class="white">
+    <div class="nav-wrapper">
+      <a href="#!" class="center brand-logo">Idew</a>
 
-<router-outlet></router-outlet>
+      <h1 class="teest">TEEEEST</h1>
+
+
+      <div class="right search-field searchBox">
+
+        <form [formGroup]="postForm" novalidate>
+          <input placeholder="Search..." (click)="openDropdown()" formControlName="searchControl" class="input-field"
+            ng-model="searchbox">
+        </form>
+
+        <div *ngIf="postForm.value.searchControl">
+          <div *ngIf="this.showDropdown == true && postForm.value.searchControl.length > 2" class="post-container-dropdown"
+            id='style-4'>
+            <div (click)="selectPost(s)" class="post" *ngFor="let post of posts | search:getSearchValue() " style="color: black">
+              <div (click)="navigate(post.id)">{{post.title}}</div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="hide-on-med-and-down">
+        <div class="navbar-items">
+          <li><a class="hover-item" routerLink="treatments-view">TREATMENTS</a></li>
+          <li><a class="hover-item" routerLink="skincare-view">SKINCARE</a></li>
+          <li><a class="hover-item" routerLink="hair-view">HAIR & NAILS</a></li>
+          <li><a class="hover-item" routerLink="beauty-view">BEAUTY</a></li>
+          <li><a class="hover-item" routerLink="forever-view">FOREVER GOOD</a></li>
+        </div>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- NAVBAR MOBIL -->
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="sass.html">TREATMENTS</a></li>
+    <li><a href="badges.html">SKINCARE</a></li>
+    <li><a href="collapsible.html">HAIR & NAILS</a></li>
+    <li><a href="mobile.html">BEAUTY</a></li>
+    <li><a href="mobile.html">FOREVER GOOD</a></li>
+  </ul>
+
+  <router-outlet></router-outlet>
+</div>
+
+
+<!-- FOOTER -->
